@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="bootstrap-table.min.css">
+	<link rel="stylesheet" href="bootstrap-table-reorder-rows.css">
+
+	<script src="./jquery-3.2.1.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<script src="bootstrap-table.min.js"></script>
+	<script src="bootstrap-table-zh-CN.min.js"></script>
+	<script src="jquery.tablednd.js"></script>
+	<script src="bootstrap-table-reorder-rows.js"></script>
+
+</head>
+<body>
+
+	<table id="tb_order" data-use-row-attr-func="true" data-reorderable-rows="true"></table>
+	
+	<script>
+		var arr = [
+			{name:'模拟1',id:1},
+			{name:'模拟2',id:2},
+			{name:'模拟3',id:3},
+		]
+
+		$("#tb_order").bootstrapTable({
+			columns:[{
+				field:'id',
+				title: "ID"
+			},{
+				field: "name",
+				title: "名字"
+			}],
+			data: arr,
+			//当选中行，拖拽时的哪行数据，并且可以获取这行数据的上一行数据和下一行数据
+			onReorderRowsDrag: function (table, row) {
+				// console.log(row)
+	            return false;
+	        },//拖拽完成后的这条数据，并且可以获取这行数据的上一行数据和下一行数据
+	        onReorderRowsDrop: function (table, row) {
+	        	console.log(row)
+	            return false;
+	        },
+			//当拖拽结束后，整个表格的数据
+	        onReorderRow: function (newData) {
+	        	// console.log(newData)
+	             return false;
+	        }
+		})
+
+
+	
+	</script>
+</body>
+</html>
